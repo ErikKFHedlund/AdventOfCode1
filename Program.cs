@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode1
+﻿using System.ComponentModel;
+
+namespace AdventOfCode1
 {
     internal class Program
     {
@@ -10,6 +12,7 @@
             string[] dataArr = data.Split("\r\n");
 
             int sum = 0;
+            int score = 0;
 
             foreach (string d in dataArr)
             {
@@ -24,7 +27,15 @@
             {
                 sum += (Math.Abs(dataList1[i] - dataList2[i]));
             }
+
+            for (int i = 0; i < dataList1.Count; i++)
+            {
+                int occurences = dataList2.Count(n => n == dataList1[i]);
+                score += (dataList1[i] * occurences);
+            }
+
             Console.WriteLine(sum);
+            Console.WriteLine(score);
         }
     }
 }
